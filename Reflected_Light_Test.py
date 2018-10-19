@@ -14,7 +14,7 @@ while True:
     print(sensors.reflected_light_intensity)
 
     if sensors.reflected_light_intensity < 30:
-        tank_drive.on_for_rotations(50, 50, 0.1)
+        tank_drive.on_for_rotations(50, 50, 1)
     else:
         tank_drive.off()
         tank_drive.on_for_rotations(100, -100, 0.8)
