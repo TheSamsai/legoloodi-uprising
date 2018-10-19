@@ -13,7 +13,7 @@ tank_drive = MoveTank("outA", "outD")
 while True:
     print(sensors.reflected_light_intensity)
 
-    if sensors.reflected_light_intensity < 30:
+    if sensors.reflected_light_intensity < 10:
         tank_drive.on_for_rotations(10, 10, 5)
     else:
         tank_drive.off()
