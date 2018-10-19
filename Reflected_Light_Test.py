@@ -19,5 +19,5 @@ while True:
         tank_drive.on_for_rotations(20, 20, 0.5)
     else:
         tank_drive.off()
-        tank_drive.on_for_rotations(100, -100, 0.8)
-        tank_drive_on_for_rotations(100, 100, 200)
+        tank_drive.on_for_rotations(100, -100, 1)
+        tank_drive.on_for_rotations(100, 100, 200)
