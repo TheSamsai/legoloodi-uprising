@@ -3,16 +3,17 @@ import os
 os.system('setfont Lat15-TerminusBold14')
 from ev3dev2.button import Button
 from ev3dev2.sensor.lego import ColorSensor
+from ev3dev2.motor import MoveTank
 
-button = Button()
 sensors = ColorSensor()
-bool = True
+tank_drive = MoveTank("outA", "outD")
 
-while bool: 
-    
+while True:
     print(sensors.reflected_light_intensity)
 
-    if button.any():
-        exit
-
-  
+    if sensors.reflected_light_intensity < 30:
+        tank_drive.on_for_rotations(50, 50, 1)
+    else:
+        tank_drive.off()
+        tank_drive.on_for_rotations(-100, 100, 1)
+        tank_drive.on_for_rotations(50, 50, 2000)
