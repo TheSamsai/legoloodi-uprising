@@ -11,12 +11,12 @@ sensors = ColorSensor()
 tank_drive = MoveTank("outA", "outD")
 
 while True:
-    print(sensors.reflected_light_intensity)
+    inten = sensors.reflected_light_intensity
+    
+    print(inten)
 
-    if sensors.reflected_light_intensity < 10:
-        tank_drive.on_for_rotations(10, 10, 5)
+    if inten < 10:
+        tank_drive.on_for_rotations(50, 50, 1)
     else:
         tank_drive.off()
         tank_drive.on_for_rotations(100, -100, 0.8)
-        tank_drive.on_for_rotations(50, 50, 200)
-        time.sleep(60)
