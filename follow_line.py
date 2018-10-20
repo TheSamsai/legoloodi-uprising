@@ -39,11 +39,11 @@ def follow_line(line_color1, line_color2 = None):
                 else:
                     LEFT(angle)
                     last_turn = LEFT
+                color = sensor.color
 
             else:
                 break
 
 
 while True:
-    print("In loop")
     follow_line(ColorSensor.COLOR_WHITE, line_color2=ColorSensor.COLOR_YELLOW)
