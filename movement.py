@@ -61,4 +61,5 @@ class Movement:
 
     def right_turn_dummy(self):
         self.stopped = False
+
         self.tank_drive.on_for_rotations(-10, 10, 0.2)
