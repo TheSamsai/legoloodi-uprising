@@ -7,13 +7,13 @@ import time
 
 move = movement.Movement(GyroSensor())
 
-LEFT = move.left_turn
-RIGHT = move.right_turn
+LEFT = move.left_turn_nonblock
+RIGHT = move.right_turn_nonblock
 
 def follow_line(line_color1, line_color2 = None):
     last_turn = RIGHT
     sensor = ColorSensor()
-    angle = 10
+    angle = 2
     
     color = sensor.color
     print(color)
@@ -37,7 +37,7 @@ def follow_line(line_color1, line_color2 = None):
             try:
                 if color != line_color1:
                     print("isn't " + str(line_color1))
-                    angle += 2
+                    angle += 5
                     angle = min(angle, 90)
                     if last_turn == LEFT:
                        RIGHT(angle)
