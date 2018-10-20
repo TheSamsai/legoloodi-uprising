@@ -11,9 +11,3 @@ while True:
 
     print (gyro.rate_and_angle)
 
-    
-
-
-
-    
-
