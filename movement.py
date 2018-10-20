@@ -15,6 +15,12 @@ class Movement:
 
     def go_backward_slow(self):
         self.tank_drive.on_for_rotations(-20, -20, 0.5)
+
+    def go_forward_fast(self):
+        self.tank_drive.on_for_rotations(100, 100, 1)
+
+    def go_backward_fast(self):
+        self.tank_drive.on_for_rotations(-100, -100, 1)
     
     def stop(self):
         self.tank_drive.off()
@@ -25,6 +31,7 @@ class Movement:
 
         while self.gyro.angle > desired_degrees:
             self.tank_drive.on_for_rotations(10, -10, 1, block = False)
+            time.sleep(0.2)
     
         self.tank_drive.off()
 
@@ -34,6 +41,7 @@ class Movement:
 
         while self.gyro.angle < desired_degrees:
             self.tank_drive.on_for_rotations(-10, 10, 1, block = False)
+            time.sleep(0.2)
     
         self.tank_drive.off()
     
