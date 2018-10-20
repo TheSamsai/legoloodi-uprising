@@ -23,7 +23,7 @@ class Movement:
         while self.gyro.angle > desired_degrees:
             self.tank_drive.on_for_rotations(10, -10, 1, block = False)
     
-        tank_drive.off()
+        self.tank_drive.off()
 
     def right_turn(self, angle):
         start_degrees = self.gyro.angle
@@ -34,4 +34,9 @@ class Movement:
     
         self.tank_drive.off()
 
+    
+    def left_turn_dummy(self):
+        self.tank_drive.on_for_rotations(10, -10, 0.5)
 
+    def right_turn_dummy(self):
+        self.tank_drive.on_for_rotations(-10, 10, 0.5)
