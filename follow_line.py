@@ -5,54 +5,56 @@ import movement as movement
 import time
 
 
-move = movement.Movement(GyroSensor())
+class LineFollower:
+    def __init__(self):
+        self.move = movement.Movement(GyroSensor())
 
-LEFT = move.left_turn_nonblock
-RIGHT = move.right_turn_nonblock
+        self.LEFT = self.move.left_turn_nonblock
+        self.RIGHT = self.move.right_turn_nonblock
 
-def follow_line(line_color1, line_color2 = None):
-    last_turn = RIGHT
-    sensor = ColorSensor()
-    angle = 2
-    
-    color = sensor.color
-    print(color)
-
-    if (line_color2 != None):
-       if color == line_color2:
-           move.stop()
-
-    if color == line_color1:
-        move.go_forward_slow()
-        print("found")
-
-   
-        
-    else:
         while True:
-            print("lost")
+            self.follow_line(ColorSensor.COLOR_WHITE, line_color2=ColorSensor.COLOR_YELLOW)
+
+    def follow_line(self, line_color1, line_color2 = None):
+        last_turn = self.RIGHT
+        sensor = ColorSensor()
+        angle = 2
+    
+        color = sensor.color
+        print(color)
+
+        if (line_color2 != None):
+            if color == line_color2:
+                self.move.stop()
+
+        if color == line_color1:
+            self.move.go_forward_slow()
+            print("found")
+        
+        else:
+            while True:
+                print("lost")
             
-            print(color)
+                print(color)
             
-            try:
-                if color != line_color1:
-                    print("isn't " + str(line_color1))
-                    angle += 5
-                    angle = min(angle, 90)
-                    if last_turn == LEFT:
-                       RIGHT(angle)
-                       last_turn = RIGHT
+                try:
+                    if color != line_color1:
+                        print("isn't " + str(line_color1))
+                        angle += 5
+                        angle = min(angle, 90)
+                        
+                        if last_turn == LEFT:
+                           self.RIGHT(angle)
+                           last_turn = self.RIGHT
+                        else:
+                            self.LEFT(angle)
+                            last_turn = self.LEFT
+                        color = sensor.color
+
                     else:
-                        LEFT(angle)
-                        last_turn = LEFT
-                    color = sensor.color
-
-                else:
-                    break
-            except:
-                move = movement.Movement(GyroSensor())
-                LEFT = move.left_turn
-                RIGHT = move.right_turn
-
-while True:
-    follow_line(ColorSensor.COLOR_WHITE, line_color2=ColorSensor.COLOR_YELLOW)
+                        break
+                except:
+                    self.move = movement.Movement(GyroSensor())
+                    self.LEFT = self.move.left_turn
+                    self.RIGHT = self.move.right_turn
+ 
