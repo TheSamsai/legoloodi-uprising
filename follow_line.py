@@ -31,7 +31,9 @@ def follow_line(line_color1, line_color2 = None):
             print("lost")
             
             print(color)
+            
             if color != line_color1:
+                print("isn't " + str(line_color1))
                 angle += 10
                 angle = min(angle, 90)
                 if last_turn == LEFT:
