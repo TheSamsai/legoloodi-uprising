@@ -20,16 +20,17 @@ def follow_line(line_color1, line_color2 = None):
 
     if color == line_color1:
         movement.go_forward_slow()
+        print("found")
 
     if (line_color2 != None):
         if color == line_color2:
             tank_drive.off()
 
-    print("found)
+    
         
     else:
 
-        tank_drive.off()
+       
 
         while True:
             print("lost")
