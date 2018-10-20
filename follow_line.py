@@ -17,8 +17,8 @@ class LineFollower:
         self.gyro.MODE_GYRO_CAL        
         self.move = movement.Movement(GyroSensor())
 
-        self.LEFT = self.move.left_turn_nonblock
-        self.RIGHT = self.move.right_turn_nonblock
+        self.LEFT = self.move.left_turn
+        self.RIGHT = self.move.right_turn
 
         while True:
             self.follow_line(ColorSensor.COLOR_WHITE, line_color2=ColorSensor.COLOR_YELLOW)
