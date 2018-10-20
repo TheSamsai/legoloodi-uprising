@@ -57,4 +57,5 @@ class LineFollower:
                     self.move = movement.Movement(GyroSensor())
                     self.LEFT = self.move.left_turn
                     self.RIGHT = self.move.right_turn
- 
+
+solve = LineFollower()
