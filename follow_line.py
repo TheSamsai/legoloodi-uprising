@@ -18,13 +18,15 @@ def follow_line(line_color1, line_color2 = None):
     color = sensor.color
     print(color)
 
+    if (line_color2 != None):
+       if color == line_color2:
+           move.stop()
+
     if color == line_color1:
         move.go_forward_slow()
         print("found")
 
-    #elif (line_color2 != None):
-    #    if color == line_color2:
-    #        tank_drive.off()
+   
         
     else:
         while True:
@@ -34,7 +36,7 @@ def follow_line(line_color1, line_color2 = None):
             
             if color != line_color1:
                 print("isn't " + str(line_color1))
-                angle += 10
+                angle += 2
                 angle = min(angle, 90)
                 if last_turn == LEFT:
                    RIGHT(angle)
