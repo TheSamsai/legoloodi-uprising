@@ -34,21 +34,25 @@ def follow_line(line_color1, line_color2 = None):
             
             print(color)
             
-            if color != line_color1:
-                print("isn't " + str(line_color1))
-                angle += 2
-                angle = min(angle, 90)
-                if last_turn == LEFT:
-                   RIGHT(angle)
-                   last_turn = RIGHT
+            try:
+                if color != line_color1:
+                    print("isn't " + str(line_color1))
+                    angle += 2
+                    angle = min(angle, 90)
+                    if last_turn == LEFT:
+                       RIGHT(angle)
+                       last_turn = RIGHT
+                    else:
+                        LEFT(angle)
+                        last_turn = LEFT
+                    color = sensor.color
+
                 else:
-                    LEFT(angle)
-                    last_turn = LEFT
-                color = sensor.color
-
-            else:
-                break
-
+                    break
+            except:
+                move = movement.Movement(GyroSensor())
+                LEFT = move.left_turn
+                RIGHT = move.right_turn
 
 while True:
     follow_line(ColorSensor.COLOR_WHITE, line_color2=ColorSensor.COLOR_YELLOW)
