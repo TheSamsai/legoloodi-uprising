@@ -3,7 +3,7 @@ from ev3dev2.motor import MoveTank
 import movement as movement
 import time
 
-sensor = ColorSensor
+sensor = ColorSensor()
 gyro = GyroSensor()
 move = movement.Movement(gyro)
 LEFT = move.left_turn
@@ -27,9 +27,10 @@ def follow_line(self, line_color1, line_color2 = None):
         
         else:
             while True:
+                color = sensor.color
                 print("lost")
             
-                print(color)
+                print(sensor.color_name)
 
                 if last_turn == self.LEFT:
                     self.RIGHT(angle)
@@ -39,7 +40,7 @@ def follow_line(self, line_color1, line_color2 = None):
                     last_turn = self.LEFT
                     color = self.sensor.color
 
-                if color == line_color1 or color = line_color2:
+                if color == line_color1 or line_color2:
                     break
                     
                 else:
