@@ -19,7 +19,7 @@ def left_turn(angle):
     
     tank_drive.off()
 
-def left_turn(angle):
+def right_turn(angle):
     start_degrees = gyro.angle
     desired_degrees = start_degrees + angle
 
