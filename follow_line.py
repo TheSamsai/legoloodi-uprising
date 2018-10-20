@@ -7,12 +7,7 @@ import time
 
 class LineFollower:
     def __init__(self):
-        self.gyro = GyroSensor()
-        
-        self.gyro.mode = 'GYRO-RATE'
-        self.gyro.mode = 'GYRO-ANG'
-        self.gyro.mode = 'GYRO-RATE'
-        self.gyro.mode = 'GYRO-ANG'  
+        self.gyro = GyroSensor() 
         self.move = movement.Movement(self.gyro)
 
         self.LEFT = self.move.left_turn
