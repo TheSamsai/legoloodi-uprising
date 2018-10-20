@@ -25,17 +25,11 @@ def follow_line(line_color1, line_color2 = None):
     if (line_color2 != None):
         if color == line_color2:
             tank_drive.off()
-
-    
         
     else:
-
-       
-
         while True:
             print("lost")
 
-            
             if color != line_color1:
                 angle += 10
                 angle = min(angle, 90)
@@ -49,9 +43,7 @@ def follow_line(line_color1, line_color2 = None):
             else:
                 break
 
-           
-
-
 
 while True:
+    print("In loop")
     follow_line(ColorSensor.COLOR_WHITE, line_color2=ColorSensor.COLOR_YELLOW)
