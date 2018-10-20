@@ -28,11 +28,17 @@ class Movement:
         self.stopped = True
 
     def left_turn(self, angle):
+        print("turning towards left" + str(angle))
+
         self.stopped = False
         start_degrees = self.gyro.angle
         desired_degrees = start_degrees - angle
 
-        while self.gyro.angle > desired_degrees and not self.stopped:
+        while self.gyro.angle > desired_degrees:
+            if self.stopped:
+                break
+
+            print(str(self.gyro.angle) + " of " + str(desired_degrees)) 
             self.tank_drive.on_for_rotations(10, -10, 1, block = False)
             time.sleep(0.2)
     
@@ -43,7 +49,10 @@ class Movement:
         start_degrees = self.gyro.angle
         desired_degrees = start_degrees + angle
 
-        while self.gyro.angle < desired_degrees and not self.stopped:
+        while self.gyro.angle < desired_degrees:
+            if self.stopped:
+                break
+
             self.tank_drive.on_for_rotations(-10, 10, 1, block = False)
             time.sleep(0.2)
     
