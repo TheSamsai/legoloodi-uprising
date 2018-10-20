@@ -4,7 +4,6 @@ from ev3dev2.motor import MoveTank
 
 import time
 
-
 class Movement:
     def __init__(self, gyro):
         self.gyro = gyro
@@ -22,6 +21,7 @@ class Movement:
 
         while self.gyro.angle > desired_degrees:
             self.tank_drive.on_for_rotations(10, -10, 1, block = False)
+            time.sleep(0.2)
     
         self.tank_drive.off()
 
@@ -31,6 +31,7 @@ class Movement:
 
         while self.gyro.angle < desired_degrees:
             self.tank_drive.on_for_rotations(-10, 10, 1, block = False)
+            time.sleep(0.2)
     
         self.tank_drive.off()
 
