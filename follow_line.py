@@ -40,7 +40,7 @@ def follow_line(line_color1, line_color2 = None):
                    last_turn = RIGHT
                 else:
                     LEFT(angle)
-                   last_turn = LEFT
+                    last_turn = LEFT
 
             else:
                 break
