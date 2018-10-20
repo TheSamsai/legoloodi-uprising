@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import sys, termios, tty, os, time
-from movement import go_forward_slow, right_turn, left_turn
-from claw import open, close
+import movement as Movement
+import claw as Claw
 
 def getch():
     fd = sys.stdin.fileno()
@@ -22,23 +22,35 @@ while True:
 
     if (char == 'p'):
         exit(0)
+        
 
     if (char == 'd'):
         print('Right')
-        time.sleep(button_delay)
-    
-    elif (char == 'w'):
-        print('Forward')
+        Movement.right_turn(30)
         time.sleep(button_delay)
 
     elif (char == 'a'):
         print('Left')
+        Movement.left_turn(30)
         time.sleep(button_delay)
+    
+    elif (char == 'w'):
+        print('Forward')
+        Movement.go_forward_slow()
+        time.sleep(button_delay)
+
+    elif (char == 's'):
+        print('Backwards')
+        Movement.go_backward_slow()
+        time.sleep(button_delay)
+
 
     elif (char == 'z'):
         print('ClawClose')
+        Claw.close()
         time.sleep(button_delay)
         
     elif (char == 'x'):
         print('ClawOpen')
+        Claw.open()
         time.sleep(button_delay)
