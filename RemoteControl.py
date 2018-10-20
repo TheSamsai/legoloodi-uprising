@@ -18,7 +18,7 @@ def getch():
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
     
-button_delay = 0.2
+button_delay = 0.1
 
 while True:
     char = getch()
@@ -39,12 +39,12 @@ while True:
     
     elif (char == 'w'):
         print('Forward')
-        move.go_forward_slow()
+        move.go_forward_fast()
         time.sleep(button_delay)
 
     elif (char == 's'):
         print('Backwards')
-        move.go_backward_slow()
+        move.go_backward_fast()
         time.sleep(button_delay)
 
 
