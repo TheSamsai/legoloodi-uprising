@@ -32,7 +32,7 @@ class Movement:
 
         self.stopped = False
         start_degrees = self.gyro.angle
-        desired_degrees = start_degrees - angle
+        desired_degrees = start_degrees + angle
 
         while self.gyro.angle > desired_degrees:
             if self.stopped:
@@ -47,7 +47,7 @@ class Movement:
     def right_turn(self, angle):
         self.stopped = True
         start_degrees = self.gyro.angle
-        desired_degrees = start_degrees + angle
+        desired_degrees = start_degrees - angle
 
         while self.gyro.angle < desired_degrees:
             if self.stopped:
