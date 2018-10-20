@@ -7,7 +7,7 @@ sensor = ColorSensor()
 gyro = GyroSensor()
 move = movement.Movement(gyro)
 LEFT = move.left_turn
-RIGHT = move.right_turn
+RIGHT = move.right_turn 
 
 
 def follow_line(self, line_color1, line_color2 = None):

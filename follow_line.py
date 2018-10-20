@@ -42,10 +42,10 @@ class LineFollower:
                 if last_turn == self.LEFT:
                         self.RIGHT(angle)
                         last_turn = self.RIGHT
-                    else:
-                        self.LEFT(angle)
-                        last_turn = self.LEFT
-                        color = self.sensor.color
+                else:
+                    self.LEFT(angle)
+                    last_turn = self.LEFT
+                    color = self.sensor.color
 
                 if color != line_color1:
                     print("isn't " + str(line_color1))
