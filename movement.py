@@ -39,7 +39,7 @@ class Movement:
                 break
 
             print(str(self.gyro.angle) + " of " + str(desired_degrees)) 
-            self.tank_drive.on_for_rotations(10, -10, 1, block = False)
+            self.tank_drive.on_for_rotations(10, -10, 1)
             time.sleep(0.2)
     
         self.tank_drive.off()
@@ -53,7 +53,7 @@ class Movement:
             if self.stopped:
                 break
 
-            self.tank_drive.on_for_rotations(-10, 10, 1, block = False)
+            self.tank_drive.on_for_rotations(-10, 10, 1)
             time.sleep(0.2)
     
         self.tank_drive.off()
