@@ -8,7 +8,7 @@ import time
 class Movement:
     def __init__(self, gyro):
         self.gyro = gyro
-        self.tank_drive = MoveTank("outA", "outB")
+        self.tank_drive = MoveTank("outA", "outD")
 
     def go_forward_slow(self):
         self.tank_drive.on_for_rotations(20, 20, 0.5)
