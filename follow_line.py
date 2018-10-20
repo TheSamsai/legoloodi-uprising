@@ -38,6 +38,9 @@ def follow_line(line_color1, line_color2 = None):
                 if last_turn == LEFT:
                    RIGHT(angle)
                    last_turn = RIGHT
+                else:
+                    LEFT(angle)
+                   last_turn = LEFT
 
             else:
                 break
