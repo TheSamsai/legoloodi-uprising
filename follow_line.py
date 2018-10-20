@@ -1,26 +1,25 @@
 #!/usr/bin/env python3
-from ev3dev2.sensor.lego import ColorSensor
+from ev3dev2.sensor.lego import ColorSensor, GyroSensor
 from ev3dev2.motor import MoveTank
 import movement as movement
 import time
 
 
-LEFT = movement.left_turn
-RIGHT = movement.right_turn
+move = movement.Movement(GyroSensor())
 
-
+LEFT = move.left_turn
+RIGHT = move.right_turn
 
 def follow_line(line_color1, line_color2 = None):
     last_turn = RIGHT
     sensor = ColorSensor()
-    tank_drive = MoveTank("outA", "outD")
     angle = 10
     
     color = sensor.color
     print(color)
 
     if color == line_color1:
-        movement.go_forward_slow()
+        move.go_forward_slow()
         print("found")
 
     #elif (line_color2 != None):
