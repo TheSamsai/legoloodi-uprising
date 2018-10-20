@@ -4,20 +4,32 @@ from ev3dev2.motor import MoveTank
 
 import time
 
+tank_drive = MoveTank("outA", "outD")
+gyro = GyroSensor()
 
-
-def go_forward_slow(drive):
+def go_forward_slow():
     drive.on_for_rotations(20, 20, 0.5)
 
-def left_turn_45(drive):
-    drive.on_for_rotations(-50, 50, 1)
+def left_turn(angle):
+    start_degrees = gyro.angle
+    desired_degrees = start_degrees - angle
 
-def right_turn_45(drive):
-    drive.on_for_rotations(50, -50, 1)
+    while gyro.angle > desired_degrees:
+        drive.on_for_rotations(-50, 50, 1, block = False)
+    
+    drive.off()
+
+def left_turn(angle):
+    start_degrees = gyro.angle
+    desired_degrees = start_degrees + angle
+
+    while gyro.angle < desired_degrees:
+        drive.on_for_rotations(50, -50, 1, block = False)
+    
+    drive.off()
 
 def follow_line(line_color):
     sensor = ColorSensor()
-    tank_drive = MoveTank("outA", "outD")
     
     color = sensor.color
 
@@ -39,6 +51,4 @@ def follow_line(line_color):
                 if color != line_color:
                     right_turn_45(tank_drive)
 
-while True:
-    follow_line(ColorSensor.COLOR_BLACK)
 
