@@ -13,7 +13,8 @@ class LineFollower:
         self.gyro.mode = 'GYRO-ANG'
         self.gyro.mode = 'GYRO-RATE'
         self.gyro.mode = 'GYRO-ANG'
-        
+        self.gyro.MODE_GYRO_CAL
+        self.gyro.MODE_GYRO_CAL        
         self.move = movement.Movement(GyroSensor())
 
         self.LEFT = self.move.left_turn_nonblock
@@ -25,7 +26,7 @@ class LineFollower:
     def follow_line(self, line_color1, line_color2 = None):
         last_turn = self.RIGHT
         sensor = ColorSensor()
-        angle = 2
+        angle = 3
     
         color = sensor.color
         print(color)
@@ -50,7 +51,7 @@ class LineFollower:
                         angle += 5
                         angle = min(angle, 90)
                         
-                        if last_turn == LEFT:
+                        if last_turn == self.LEFT:
                            self.RIGHT(angle)
                            last_turn = self.RIGHT
                         else:
