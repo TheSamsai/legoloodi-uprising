@@ -7,26 +7,22 @@ import time
 
 class LineFollower:
     def __init__(self):
-        self.gyro = GyroSensor()
-        
-        self.gyro.mode = 'GYRO-RATE'
-        self.gyro.mode = 'GYRO-ANG'
-        self.gyro.mode = 'GYRO-RATE'
-        self.gyro.mode = 'GYRO-ANG'  
+        self.gyro = GyroSensor() 
         self.move = movement.Movement(self.gyro)
 
         self.LEFT = self.move.left_turn
         self.RIGHT = self.move.right_turn
+        self.sensor = ColorSensor()
 
         while True:
             self.follow_line(ColorSensor.COLOR_WHITE, line_color2=ColorSensor.COLOR_YELLOW)
 
     def follow_line(self, line_color1, line_color2 = None):
         last_turn = self.RIGHT
-        sensor = ColorSensor()
+        
         angle = 3
     
-        color = sensor.color
+        color = self.sensor.color
         print(color)
 
         if (line_color2 != None):
@@ -42,34 +38,22 @@ class LineFollower:
                 print("lost")
             
                 print(color)
-            
-                try:
-                    if color != line_color1:
-                        print("isn't " + str(line_color1))
-                        angle += 5
-                        angle = min(angle, 90)
+
+                if color != line_color1:
+                    print("isn't " + str(line_color1))
+                    angle += 5
+                    angle = min(angle, 90)
                         
-                        if last_turn == self.LEFT:
-                           self.RIGHT(angle)
-                           last_turn = self.RIGHT
-                        else:
-                            self.LEFT(angle)
-                            last_turn = self.LEFT
-                        color = sensor.color
-
+                    if last_turn == self.LEFT:
+                        self.RIGHT(angle)
+                        last_turn = self.RIGHT
                     else:
-                        break
-                except:
-                    self.move.stop()
+                        self.LEFT(angle)
+                        last_turn = self.LEFT
+                        color = self.sensor.color
 
-                    self.gyro = GyroSensor()
-        
-                    self.gyro.mode = 'GYRO-RATE'
-                    self.gyro.mode = 'GYRO-ANG'
-                    self.gyro.mode = 'GYRO-RATE'
-                    self.gyro.mode = 'GYRO-ANG'  
-                    self.move = movement.Movement(self.gyro)
-                    self.LEFT = self.move.left_turn
-                    self.RIGHT = self.move.right_turn
+                else:
+                    break
+
 
 solve = LineFollower()
