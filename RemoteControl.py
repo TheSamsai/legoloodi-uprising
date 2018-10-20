@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 
+from ev3dev2.sensor.lego import ColorSensor, GyroSensor
 import sys, termios, tty, os, time
-import movement as Movement
+import movement as movement
 import claw as Claw
+
+move = movement.Movement(GyroSensor())
 
 def getch():
     fd = sys.stdin.fileno()
@@ -22,26 +25,26 @@ while True:
 
     if (char == 'p'):
         exit(0)
-        
+
 
     if (char == 'd'):
         print('Right')
-        Movement.right_turn(30)
+        move.right_turn_dummy()
         time.sleep(button_delay)
 
     elif (char == 'a'):
         print('Left')
-        Movement.left_turn(30)
+        move.left_turn_dummy()
         time.sleep(button_delay)
     
     elif (char == 'w'):
         print('Forward')
-        Movement.go_forward_slow()
+        move.go_forward_slow()
         time.sleep(button_delay)
 
     elif (char == 's'):
         print('Backwards')
-        Movement.go_backward_slow()
+        move.go_backward_slow()
         time.sleep(button_delay)
 
 
