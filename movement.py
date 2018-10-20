@@ -10,12 +10,15 @@ gyro = GyroSensor()
 def go_forward_slow():
     tank_drive.on_for_rotations(20, 20, 0.5)
 
+def go_backward_slow():
+    tank_drive.on_for_rotations(-20, -20, 0.5)
+
 def left_turn(angle):
     start_degrees = gyro.angle
     desired_degrees = start_degrees - angle
 
     while gyro.angle > desired_degrees:
-        tank_drive.on_for_rotations(50, -50, 1, block = False)
+        tank_drive.on_for_rotations(25, -25, 1, block = False)
     
     tank_drive.off()
 
@@ -24,7 +27,7 @@ def right_turn(angle):
     desired_degrees = start_degrees + angle
 
     while gyro.angle < desired_degrees:
-        tank_drive.on_for_rotations(-50, 50, 1, block = False)
+        tank_drive.on_for_rotations(-25, 25, 1, block = False)
     
     tank_drive.off()
 
