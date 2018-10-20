@@ -14,4 +14,4 @@ def close():
 
     motor = MediumMotor('outB')
 
-    motor.on_for_degrees(-100,800, block=False)
+    motor.on_for_degrees(-100,800, brake=False, block=False)
