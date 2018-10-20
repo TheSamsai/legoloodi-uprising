@@ -3,6 +3,7 @@ from ev3dev2.sensor.lego import GyroSensor
 from ev3dev2.motor import MoveTank
 
 import time
+import thread
 
 class Movement:
     def __init__(self, gyro):
@@ -14,6 +15,9 @@ class Movement:
 
     def go_backward_slow(self):
         self.tank_drive.on_for_rotations(-20, -20, 0.5)
+    
+    def stop(self):
+        self.tank_drive.off()
 
     def left_turn(self, angle):
         start_degrees = self.gyro.angle
@@ -34,7 +38,12 @@ class Movement:
             time.sleep(0.2)
     
         self.tank_drive.off()
+    
+    def left_turn_nonblock(self, angle):
+        thread.start_new_thread(self.left_turn(angle))
 
+    def right_turn_nonblock(self, angle):
+        thread.start_new_thread(self.right_turn(angle))
     
     def left_turn_dummy(self):
         self.tank_drive.on_for_rotations(10, -10, 0.2)
