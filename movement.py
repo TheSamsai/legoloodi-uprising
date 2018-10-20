@@ -36,7 +36,7 @@ class Movement:
 
     
     def left_turn_dummy(self):
-        self.tank_drive.on_for_rotations(10, -10, 0.5)
+        self.tank_drive.on_for_rotations(10, -10, 0.2)
 
     def right_turn_dummy(self):
-        self.tank_drive.on_for_rotations(-10, 10, 0.5)
+        self.tank_drive.on_for_rotations(-10, 10, 0.2)
