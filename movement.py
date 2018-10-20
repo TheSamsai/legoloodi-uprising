@@ -4,31 +4,34 @@ from ev3dev2.motor import MoveTank
 
 import time
 
-tank_drive = MoveTank("outA", "outD")
-gyro = GyroSensor()
 
-def go_forward_slow():
-    tank_drive.on_for_rotations(20, 20, 0.5)
+class Movement:
+    def __init__(self, gyro):
+        self.gyro = gyro
+        self.tank_drive = MoveTank("outA", "outB")
 
-def go_backward_slow():
-    tank_drive.on_for_rotations(-20, -20, 0.5)
+    def go_forward_slow(self):
+        self.tank_drive.on_for_rotations(20, 20, 0.5)
 
-def left_turn(angle):
-    start_degrees = gyro.angle
-    desired_degrees = start_degrees - angle
+    def go_backward_slow(self):
+        self.tank_drive.on_for_rotations(-20, -20, 0.5)
 
-    while gyro.angle > desired_degrees:
-        tank_drive.on_for_rotations(10, -10, 1, block = False)
+    def left_turn(self, angle):
+        start_degrees = self.gyro.angle
+        desired_degrees = start_degrees - angle
+
+        while self.gyro.angle > desired_degrees:
+            self.tank_drive.on_for_rotations(10, -10, 1, block = False)
     
-    tank_drive.off()
+        tank_drive.off()
 
-def right_turn(angle):
-    start_degrees = gyro.angle
-    desired_degrees = start_degrees + angle
+    def right_turn(self, angle):
+        start_degrees = self.gyro.angle
+        desired_degrees = start_degrees + angle
 
-    while gyro.angle < desired_degrees:
-        tank_drive.on_for_rotations(-10, 10, 1, block = False)
+        while self.gyro.angle < desired_degrees:
+            self.tank_drive.on_for_rotations(-10, 10, 1, block = False)
     
-    tank_drive.off()
+        self.tank_drive.off()
 
 
