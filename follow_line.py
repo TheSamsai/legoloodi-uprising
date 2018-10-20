@@ -29,7 +29,8 @@ def follow_line(line_color1, line_color2 = None):
     else:
         while True:
             print("lost")
-
+            
+            print(color)
             if color != line_color1:
                 angle += 10
                 angle = min(angle, 90)
