@@ -17,6 +17,7 @@ def follow_line(line_color1, line_color2 = None):
     angle = 10
     
     color = sensor.color
+    print(color)
 
     if color == line_color1:
         movement.go_forward_slow()
