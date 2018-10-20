@@ -18,7 +18,7 @@ def left_turn(angle):
     desired_degrees = start_degrees - angle
 
     while gyro.angle > desired_degrees:
-        tank_drive.on_for_rotations(25, -25, 1, block = False)
+        tank_drive.on_for_rotations(10, -10, 1, block = False)
     
     tank_drive.off()
 
@@ -27,7 +27,7 @@ def right_turn(angle):
     desired_degrees = start_degrees + angle
 
     while gyro.angle < desired_degrees:
-        tank_drive.on_for_rotations(-25, 25, 1, block = False)
+        tank_drive.on_for_rotations(-10, 10, 1, block = False)
     
     tank_drive.off()
 
