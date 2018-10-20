@@ -13,7 +13,7 @@ class LineFollower:
         self.gyro.mode = 'GYRO-ANG'
         self.gyro.mode = 'GYRO-RATE'
         self.gyro.mode = 'GYRO-ANG'  
-        self.move = movement.Movement(GyroSensor())
+        self.move = movement.Movement(self.gyro)
 
         self.LEFT = self.move.left_turn
         self.RIGHT = self.move.right_turn
@@ -60,7 +60,15 @@ class LineFollower:
                     else:
                         break
                 except:
-                    self.move = movement.Movement(GyroSensor())
+                    self.move.stop()
+
+                    self.gyro = GyroSensor()
+        
+                    self.gyro.mode = 'GYRO-RATE'
+                    self.gyro.mode = 'GYRO-ANG'
+                    self.gyro.mode = 'GYRO-RATE'
+                    self.gyro.mode = 'GYRO-ANG'  
+                    self.move = movement.Movement(self.gyro)
                     self.LEFT = self.move.left_turn
                     self.RIGHT = self.move.right_turn
 
