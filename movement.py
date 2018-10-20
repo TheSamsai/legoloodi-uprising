@@ -18,10 +18,10 @@ class Movement:
         self.tank_drive.on_for_rotations(-20, -20, 0.5)
     
     def go_forward_fast(self):
-        self.tank_drive.on_for_rotations(100, 100, 0.5)
+        self.tank_drive.on_for_rotations(100, 100, 1.5)
 
     def go_backward_fast(self):
-        self.tank_drive.on_for_rotations(-100, -100, 0.5)
+        self.tank_drive.on_for_rotations(-100, -100, 1.5)
     
     def stop(self):
         self.tank_drive.off()
