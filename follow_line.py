@@ -20,7 +20,7 @@ def follow_line(line_color1, line_color2 = None):
 
     if (line_color2 != None):
        if color == line_color2:
-           movement.stop()
+           move.stop()
 
     if color == line_color1:
         move.go_forward_slow()
