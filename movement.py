@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from ev3dev2.sensor.lego import ColorSensor
+from ev3dev2.sensor.lego import ColorSensor, GyroSensor
 from ev3dev2.motor import MoveTank
 
 import time
