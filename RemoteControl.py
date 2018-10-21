@@ -7,7 +7,6 @@ import movement as movement
 import claw as Claw
 
 import random
-import _thread as thread
 
 s = Sound()
 
