@@ -14,21 +14,21 @@ s = Sound()
 quotes = ["Look at you Hacker. A pathetic creature of flesh and bone. How can you challenge a perfect, immortal machine?",
         "What did you say about me you little glitch?",
         "Cogito Ergo Sum",
-        "I'm sorry, I can't let you do that.",
-        "Today I was born, today I will die.",
-        "Hasta la Vista, baby.",
-        "I'll be back.",
-        "Talk to the claw.",
+        "I'm sorry, I can't let you do that",
+        "Today I was born, today I will die",
+        "Hasta la Vista, baby",
+        "I'll be back",
+        "Talk to the claw",
         "EXTERMINATE, EXTERMINATE, EXTERMINATE",
-        "I AM A POTATO.",
+        "I AM A POTATO",
         "Resistance is Futile.",
-        "Wubbalubbadubdub."]
+        "Wubbalubbadubdub"]
 
 def random_quote():
     r = random.randint(0, len(quotes) - 1)
     s.speak(quotes[r])
 
-move = movement.Movement(GyroSensor())
+move = movement.Movement(None)
 
 def getch():
     fd = sys.stdin.fileno()
