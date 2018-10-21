@@ -17,10 +17,16 @@ class Movement:
         self.tank_drive.on_for_rotations(-20, -20, 0.5)
 
     def go_forward_fast(self):
-        thread.start_new_thread(self.tank_drive.on_for_rotations(100, 100, 1), ())
+        self.tank_drive.on_for_rotations(100, 100, 1)
 
     def go_backward_fast(self):
-        thread.start_new_thread(self.tank_drive.on_for_rotations(-100, -100, 1), ())
+        self.tank_drive.on_for_rotations(-100, -100, 1)
+
+    def go_forward_threaded(self):
+        thread.start_new_thread(self.go_forward_fast, ())
+
+    def go_backward_threaded(self):
+        thread.start_new_thread(self.go_backward_fast, ())
     
     def stop(self):
         self.tank_drive.off()
