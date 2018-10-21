@@ -18,7 +18,11 @@ quotes = ["Look at you Hacker. A pathetic creature of flesh and bone. How can yo
         "Today I was born, today I will die.",
         "Hasta la Vista, baby.",
         "I'll be back.",
-        "Talk to the claw."]
+        "Talk to the claw.",
+        "EXTERMINATE, EXTERMINATE, EXTERMINATE",
+        "I AM A POTATO.",
+        "Resistance is Futile.",
+        "Wubbalubbadubdub."]
 
 def random_quote():
     r = random.randint(0, len(quotes) - 1)
