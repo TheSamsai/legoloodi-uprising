@@ -43,6 +43,12 @@ class Movement:
     def right_turn_nonblock(self, angle):
         thread.start_new_thread(self.right_turn(angle))
     
+    def left_turn_dummy_nonblock(self):
+        self.tank_drive.on_for_rotations(10,-10, 0.2, block=False)
+    
+    def right_turn_dummy_nonblock(self):
+        self.tank_drive.on_for_rotations(-10,10, 0.2, block=False)
+    
     def left_turn_dummy(self):
         self.tank_drive.on_for_rotations(10, -10, 0.2)
 
