@@ -29,19 +29,19 @@ while True:
 
     if (char == 'd'):
         print('Right')
-        move.right_turn_dummy()
+        move.right_turn_dummy_nonblock()
 
     elif (char == 'a'):
         print('Left')
-        move.left_turn_dummy()
+        move.left_turn_dummy_nonblock()
     
     elif (char == 'w'):
         print('Forward')
-        move.go_forward_fast()
+        move.go_forward_fast_nonblock()
 
     elif (char == 's'):
         print('Backwards')
-        move.go_backward_fast()
+        move.go_backward_fast_nonblock()
 
 
     elif (char == 'z'):

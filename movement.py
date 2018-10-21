@@ -23,6 +23,18 @@ class Movement:
     def go_backward_fast(self):
         self.tank_drive.on_for_rotations(-100, -100, 1)
     
+    def go_forward_slow_nonblock(self):
+        self.tank_drive.on_for_rotations(20, 20, 0.5, block=False)
+
+    def go_backward_slow_nonblock(self):
+        self.tank_drive.on_for_rotations(-20, -20, 0.5, block=False)
+
+    def go_forward_fast_nonblock(self):
+        self.tank_drive.on_for_rotations(100, 100, 1, block=False)
+
+    def go_backward_fast_nonblock(self):
+        self.tank_drive.on_for_rotations(-100, -100, 1, block=False)
+
     def stop(self):
         self.tank_drive.off()
 
