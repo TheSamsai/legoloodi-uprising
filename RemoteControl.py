@@ -14,7 +14,11 @@ s = Sound()
 quotes = ["Look at you Hacker. A pathetic creature of flesh and bone. How can you challenge a perfect, immortal machine?",
         "What did you say about me you little glitch?",
         "Cogito Ergo Sum",
-        "I'm sorry, I can't let you do that."]
+        "I'm sorry, I can't let you do that.",
+        "Today I was born, today I will die.",
+        "Hasta la Vista, baby.",
+        "I'll be back.",
+        "Talk to the claw."]
 
 def random_quote():
     r = random.randint(0, len(quotes) - 1)
