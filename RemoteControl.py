@@ -30,30 +30,24 @@ while True:
     if (char == 'd'):
         print('Right')
         move.right_turn_dummy()
-        time.sleep(button_delay)
 
     elif (char == 'a'):
         print('Left')
         move.left_turn_dummy()
-        time.sleep(button_delay)
     
     elif (char == 'w'):
         print('Forward')
         move.go_forward_fast()
-        time.sleep(button_delay)
 
     elif (char == 's'):
         print('Backwards')
         move.go_backward_fast()
-        time.sleep(button_delay)
 
 
     elif (char == 'z'):
         print('ClawClose')
         Claw.close()
-        time.sleep(button_delay)
         
     elif (char == 'x'):
         print('ClawOpen')
         Claw.open()
-        time.sleep(button_delay)

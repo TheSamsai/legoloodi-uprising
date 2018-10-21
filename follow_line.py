@@ -23,7 +23,7 @@ class LineFollower:
         angle = 3
     
         color = self.sensor.color
-        print(color)
+        print(self.sensor.color_name)
 
         if (line_color2 != None):
             if color == line_color2:
@@ -37,20 +37,22 @@ class LineFollower:
             while True:
                 print("lost")
             
-                print(color)
+                print(self.sensor.color_name)
+
+                if last_turn == self.LEFT:
+                        self.RIGHT(angle)
+                        last_turn = self.RIGHT
+                else:
+                    self.LEFT(angle)
+                    last_turn = self.LEFT
+                    color = self.sensor.color
 
                 if color != line_color1:
                     print("isn't " + str(line_color1))
                     angle += 5
                     angle = min(angle, 90)
                         
-                    if last_turn == self.LEFT:
-                        self.RIGHT(angle)
-                        last_turn = self.RIGHT
-                    else:
-                        self.LEFT(angle)
-                        last_turn = self.LEFT
-                        color = self.sensor.color
+                    
 
                 else:
                     break
