@@ -2,7 +2,6 @@
 from ev3dev2.sensor.lego import GyroSensor
 from ev3dev2.motor import MoveTank
 
-import time
 import _thread as thread
 
 class Movement:
