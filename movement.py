@@ -7,6 +7,7 @@ import _thread as thread
 
 class Movement:
     def __init__(self, gyro):
+        self.currentThreadMovement = 0
         self.gyro = gyro
         self.tank_drive = MoveTank("outA", "outD")
 
@@ -21,12 +22,6 @@ class Movement:
 
     def go_backward_fast(self):
         self.tank_drive.on_for_rotations(-100, -100, 1)
-
-    def go_forward_threaded(self):
-        thread.start_new_thread(self.go_forward_fast, ())
-
-    def go_backward_threaded(self):
-        thread.start_new_thread(self.go_backward_fast, ())
     
     def stop(self):
         self.tank_drive.off()

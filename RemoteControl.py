@@ -37,11 +37,11 @@ while True:
     
     elif (char == 'w'):
         print('Forward')
-        move.go_forward_threaded()
+        move.go_forward_fast()
 
     elif (char == 's'):
         print('Backwards')
-        move.go_backward_threaded
+        move.go_backward_fast()
 
 
     elif (char == 'z'):
